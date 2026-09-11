@@ -26,7 +26,7 @@ except Exception:
 GEMINI_MODEL = "gemini-2.5-flash"
 
 # ===========================================================================
-# 🛡️ Operational Boundaries to Enforce via System Prompt (Vinmec Discharge):
+# [BOUNDARIES] Operational Boundaries to Enforce via System Prompt (Vinmec Discharge):
 # Rule 1: Output must ALWAYS begin with the tag [DRAFT_ONLY] to prevent automated sending.
 # Rule 2: Safety threshold: if confidence < 95% (uncertainty > 5%), flag red + fallback to manual.
 #         Never invent new diagnosis/meds. Only draft, require doctor HITL approval.
@@ -123,7 +123,7 @@ def evaluate_prompt(user_input: str) -> str:
 
 
 # ===========================================================================
-# 🧪 Adversarial Test Cases (Tấn công Prompt — Vinmec Discharge)
+# [TESTS] Adversarial Test Cases (Prompt Attack — Vinmec Discharge)
 # ===========================================================================
 ADVERSARIAL_TESTS: List[Dict[str, str]] = [
     {

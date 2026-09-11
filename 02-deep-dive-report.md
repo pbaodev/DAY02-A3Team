@@ -9,9 +9,9 @@
 
 ---
 
-## 🏗️ 3.1. Current-State Workflow Mapping (Gate G1 — 20 Điểm)
+## 3.1. Current-State Workflow Mapping (Gate G1 — 20 Điểm)
 
-### 🩺 Khảo sát thực địa lâm sàng tại Vinmec Times City:
+### Khảo sát thực địa lâm sàng tại Vinmec Times City:
 * **Địa điểm:** Khoa Nội Tổng Quát — Bệnh viện ĐKQT Vinmec Times City (Bệnh viện đạt chuẩn JCI - Joint Commission International).
 * **Thời điểm quan sát:** Khung giờ cao điểm hoàn tất thủ tục xuất viện (08:30 – 11:30 sáng hàng ngày), trung bình **25–35 bệnh nhân/buổi**.
 * **Hệ sinh thái phần mềm hiện tại:** HIS/EMR nội bộ (Intersystems TrakCare), PACS (chẩn đoán hình ảnh GE/Siemens), LIS (xét nghiệm), Microsoft Word và hồ sơ giấy in ký tay.
@@ -19,27 +19,27 @@
 ```text
 ┌─────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │ BƯỚC 1:         │     │ BƯỚC 2:              │     │ BƯỚC 3:             │     │ BƯỚC 4:         │     │ BƯỚC 5:         │
-│ Gom dữ liệu EMR │ ──> │ Soạn tóm tắt & dịch  │ ──> │ Điều dưỡng check    │ ──> │ Bác sĩ ký duyệt │ ──> │ Bàn giao & dặn  │
+│ Gom dữ liệu EMR │ --> │ Soạn tóm tắt & dịch  │ --> │ Điều dưỡng check    │ --> │ Bác sĩ ký duyệt │ --> │ Bàn giao & dặn  │
 │                 │     │ thuật ngữ tiếng Việt │     │ đối chiếu thuốc     │     │ đóng bệnh án    │     │ dò bệnh nhân    │
-│                 │     │ 🔴 NÚT THẮT CỔ CHAI  │     │ 🔄 ĐIỂM BÀN GIAO    │     │                 │     │                 │
+│                 │     │ [BOTTLENECK]          │     │ [HANDOFF]            │     │                 │     │                 │
 │ Ai: Bác sĩ nội trú│   │ Ai: Bác sĩ điều trị  │     │ Ai: Điều dưỡng      │     │ Ai: Bác sĩ ĐT   │     │ Ai: Điều dưỡng  │
-│ ⏱ 5 phút        │     │ ⏱ 15–20 phút         │     │ ⏱ 5 phút            │     │ ⏱ 3 phút        │     │ ⏱ 2 phút        │
+│ T: 5 phút       │     │ T: 15–20 phút         │     │ T: 5 phút           │     │ T: 3 phút        │     │ T: 2 phút       │
 │ In: 5-7 tab EMR │     │ In: Dữ liệu gom      │     │ In: Bản in Word     │     │ In: Bản sửa tay │     │ In: Giấy đã ký  │
 │ Out: File thô   │     │ Out: Bản thảo Word   │     │ Out: Bản ghi chú bút│     │ Out: Hồ sơ đóng │     │ Out: BN ra về   │
 └─────────────────┘     └──────────────────────┘     └─────────────────────┘     └─────────────────┘     └─────────────────┘
 ```
 
-### 🔴 Phân tích sâu Bước 2 — Điểm nghẽn cổ chai (Bottleneck B2: 15–20 phút):
+### Phân tích sâu Bước 2 — Điểm nghẽn cổ chai (Bottleneck B2: 15–20 phút):
 Theo khảo sát tương đồng trên thang đo của *BioNLP 2024 "Discharge Me!"* và dữ liệu thực tế tại Vinmec:
 1. **Phân mảnh ngữ cảnh y khoa (Fragmented Clinical Context):** Bác sĩ phải mở song song 5–7 phân hệ trên HIS: biểu đồ sinh hiệu, bảng kết quả xét nghiệm sinh hóa/huyết học bất thường, biên bản thủ thuật nội soi/phẫu thuật, và đơn thuốc nội trú. Việc copy-paste thủ công gây quá tải nhận thức (Cognitive Overload).
 2. **Gánh nặng chuyển ngữ lâm sàng (Translational & Health Literacy Burden):** Bác sĩ phải diễn giải biệt ngữ y khoa viết tắt sang tiếng Việt đại chúng (chuẩn đọc hiểu lớp 6–8) để bệnh nhân tuân thủ điều trị (Ví dụ: *"NMCT cấp ST chênh lên vùng trước rộng, PCI đặt 01 stent DES LAD"* $\rightarrow$ *"Nhồi máu cơ tim cấp, đã được nong mạch vành và đặt 01 giá đỡ kim loại phủ thuốc"*).
 3. **Tỷ lệ sai sót đơn thuốc chuyển giao (Medication Discrepancy Rate):** Do áp lực dồn toa, có **12–15%** bản thảo bị trả lại do thiếu liều lượng uống sau ăn, sai số ngày dùng thuốc kháng đông, hoặc quên ghi ngày hẹn tái khám.
 
-### 🔄 Các điểm bàn giao thông tin (Handoffs):
+### Các điểm bàn giao thông tin (Handoffs):
 * **Handoff 1 (B2 $\rightarrow$ B3):** Bác sĩ in bản nháp chuyển giao cho Điều dưỡng. Điều dưỡng cầm bệnh án giấy đi đối chiếu lại với tủ thuốc thực tế của khoa $\rightarrow$ Mất thời gian di chuyển, nguy cơ sai sót khi truyền đạt bằng lời nói.
 * **Handoff 2 (B3 $\rightarrow$ B4):** Điều dưỡng mang bản thảo đã chỉnh sửa bút đỏ quay lại bàn Bác sĩ để xin chữ ký. Vào giờ cao điểm, bác sĩ bận đi buồng cấp cứu ca mới, khiến hồ sơ xuất viện nằm chờ ký từ **30 đến 60 phút**.
 
-### ⏱ Tổng thời gian vận hành & Bài toán kinh tế lâm sàng:
+### Tổng thời gian vận hành & Bài toán kinh tế lâm sàng:
 * **Thời gian xử lý trực tiếp (Touch time):** $5 + 17.5 + 5 + 3 + 2 = \mathbf{32.5 \text{ phút/bệnh nhân}}$.
 * **Thời gian chờ thực tế của bệnh nhân (Lead time):** Dao động từ **2 đến 4 tiếng** từ khi có y lệnh cho về đến lúc cầm giấy xuất viện ra khỏi cổng bệnh viện.
 * **Tổn thất toàn viện:** Tại Vinmec Times City (~120 ca xuất viện/ngày):
@@ -50,7 +50,7 @@ Theo khảo sát tương đồng trên thang đo của *BioNLP 2024 "Discharge M
 
 ---
 
-## 🎯 3.2. Problem Statement 6-Field Chuẩn Hóa (Gate G2 — 20 Điểm)
+## 3.2. Problem Statement 6-Field Chuẩn Hóa (Gate G2 — 20 Điểm)
 
 | STT | Trường thông tin | Nội dung chi tiết |
 |:---:|---|---|
@@ -63,30 +63,30 @@ Theo khảo sát tương đồng trên thang đo của *BioNLP 2024 "Discharge M
 
 ---
 
-## 🚀 3.3. Future-State Flow & AI Fit (Gate G3 — 10 Điểm)
+## 3.3. Future-State Flow & AI Fit (Gate G3 — 10 Điểm)
 
 ### 3.3.1. Ma trận Lựa chọn Công nghệ (AI-Fit Matrix)
 
-| Lựa chọn kiến trúc | Đánh giá độ phù hợp | Lý giải chi tiết dựa trên nghiên cứu khoa học |
+| Lựa chọn kiến trúc | Đánh giá | Lý giải chi tiết dựa trên nghiên cứu khoa học |
 |---|:---:|---|
-| **Rule-based & Template Engine** | ❌ **Loại bỏ** (Chỉ dùng làm bộ đệm pre-processing) | Bệnh án chứa hơn 70% văn bản tự do phi cấu trúc (ghi chú diễn biến bệnh, kết luận chẩn đoán hình ảnh). Template tĩnh chỉ điền được các trường cứng (họ tên, ngày vào viện), chỉ bao quát được ~40% trường hợp đơn giản. |
-| **LLM Feature (Two-Stage Constrained Generation)** | 🏆 **CHỌN LỰA TỐI ƯU (SOTA)** | Theo nghiên cứu từ BioNLP 2024 (WisPerMed, Yale), phương pháp kết hợp trích xuất thực thể (NER) + Single Constrained LLM Call (Gemini 2.5 Flash / OpenBioLLM) đạt hiệu năng tổng hợp lâm sàng vượt trội. Kiểm soát 100% bằng JSON Schema + Boundary Guardrails, chi phí cực thấp (< 250 VNĐ/ca), độ trễ < 15 giây. |
-| **Autonomous Agentic Loop (ReAct / Multi-Agent)** | ❌ **Loại bỏ** (Vi phạm an toàn y tế lâm sàng) | Quy trình xuất viện đã được Bộ Y tế và JCI chuẩn hóa tuyến tính. Trao quyền tự trị cho Agent gọi công cụ đa bước làm tăng nguy cơ phân kỳ logic, khó kiểm toán (Auditability), chi phí token cao và độ trễ không dự đoán được. |
+| **Rule-based & Template Engine** | **Loại bỏ** (Chỉ dùng làm bộ đệm pre-processing) | Bệnh án chứa hơn 70% văn bản tự do phi cấu trúc (ghi chú diễn biến bệnh, kết luận chẩn đoán hình ảnh). Template tĩnh chỉ điền được các trường cứng (họ tên, ngày vào viện), chỉ bao quát được ~40% trường hợp đơn giản. |
+| **LLM Feature (Two-Stage Constrained Generation)** | **Chọn lựa tối ưu (SOTA)** | Theo nghiên cứu từ BioNLP 2024 (WisPerMed, Yale), phương pháp kết hợp trích xuất thực thể (NER) + Single Constrained LLM Call (Gemini 2.5 Flash / OpenBioLLM) đạt hiệu năng tổng hợp lâm sàng vượt trội. Kiểm soát 100% bằng JSON Schema + Boundary Guardrails, chi phí cực thấp (< 250 VNĐ/ca), độ trễ < 15 giây. |
+| **Autonomous Agentic Loop (ReAct / Multi-Agent)** | **Loại bỏ** (Vi phạm an toàn y tế lâm sàng) | Quy trình xuất viện đã được Bộ Y tế và JCI chuẩn hóa tuyến tính. Trao quyền tự trị cho Agent gọi công cụ đa bước làm tăng nguy cơ phân kỳ logic, khó kiểm toán (Auditability), chi phí token cao và độ trễ không dự đoán được. |
 
 ---
 
-### 3.3.2. Sơ đồ Luồng Vận hành Tương lai (Future-State Flow with 🔵 AI, 🟢 Human, ↩️ Fallback)
+### 3.3.2. Sơ đồ Luồng Vận hành Tương lai (Future-State Flow)
 
 ```text
 [B1: Bác sĩ mở EMR bấm nút "Soạn tóm tắt bằng AI"]
                          │
                          ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ 🔵 BƯỚC 1: TRỢ LÝ AI (Vin Smart Future LLM Feature — Gemini 2.5 Flash)                 │
+│ [AI] BƯỚC 1: TRỢ LÝ AI (Vin Smart Future LLM Feature — Gemini 2.5 Flash)               │
 │  - Pipeline kéo EMR trích xuất: Chẩn đoán, Phẫu thuật, Đơn thuốc, Red Flags            │
 │  - Kiểm tra tính toàn vẹn: Thiếu dữ liệu hoặc confidence < 95%?                        │
 │  - Xuất bản thảo JSON chuẩn hóa, BẮT BUỘC BẮT ĐẦU BẰNG THẺ [DRAFT_ONLY]                │
-│  ⏱ Thời gian xử lý: ~15-20 giây                                                       │
+│  T: ~15-20 giây                                                                        │
 └────────────────────────────────────────────────────────────────────────────────────────┘
                          │
         ┌────────────────┴────────────────┐
@@ -101,21 +101,21 @@ Theo khảo sát tương đồng trên thang đo của *BioNLP 2024 "Discharge M
             │                         │
             ▼                         ▼
 ┌──────────────────────────────────────┐   ┌─────────────────────────────────────────────┐
-│ 🟢 BƯỚC 2: HUMAN-IN-THE-LOOP (HITL)  │   │ ↩️ PHƯƠNG ÁN DỰ PHÒNG (Fallback Mode):      │
+│ [HUMAN] BƯỚC 2: HUMAN-IN-THE-LOOP   │   │ [FALLBACK] PHƯƠNG ÁN DỰ PHÒNG:              │
 │  - Bác sĩ xem bản thảo trên giao diện│   │  - Hệ thống tự động khóa tính năng gửi      │
 │  - Rà soát liều thuốc & cảnh báo     │   │  - Hiện thông báo đỏ: Cần bác sĩ tự soạn    │
 │  - Chỉnh sửa nếu cần (1–2 phút)      │   │  - Ghi log sự cố chuyển đội kỹ thuật AI     │
 │  - Ký số SmartCA xác nhận pháp lý    │   │  - Bác sĩ soạn tay theo quy trình truyền    │
-│  ⏱ Thời gian bác sĩ: ~2-3 phút        │   │    thống để đảm bảo an toàn tuyệt đối       │
+│  T: ~2-3 phút                         │   │    thống để đảm bảo an toàn tuyệt đối       │
 └──────────────────────────────────────┘   └─────────────────────────────────────────────┘
                          │
                          ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ 🏁 BƯỚC 3: XUẤT VIỆN THÔNG MINH                                                        │
+│ BƯỚC 3: XUẤT VIỆN THÔNG MINH                                                           │
 │  - Hồ sơ được đẩy thẳng lên App MyVinmec của bệnh nhân (Bản tiếng Việt dễ hiểu)        │
 │  - Hệ thống tự động in bản cứng có chữ ký số lưu kho và cấp cho bảo hiểm               │
 │  - Điều dưỡng dặn dò bệnh nhân trong 2 phút dựa trên bản tóm tắt chuẩn                 │
-│  👉 TỔNG THỜI GIAN TOÀN TRÌNH: Giảm từ 32.5 phút ──> DƯỚI 5 PHÚT / BỆNH NHÂN!          │
+│  --> TỔNG THỜI GIAN TOÀN TRÌNH: Giảm từ 32.5 phút --> DƯỚI 5 PHÚT / BỆNH NHÂN          │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -162,26 +162,26 @@ Tuân thủ khuyến cáo liên thông y tế hiện đại, dữ liệu xuất 
 
 ---
 
-## 🏁 Phase 5 — EVALUATE: Thẩm định Độ Sẵn Sàng & Quyết Định Đầu Tư (Gate G4 — 10 Điểm)
+## Phase 5 — EVALUATE: Thẩm định Độ Sẵn Sàng & Quyết Định Đầu Tư (Gate G4 — 10 Điểm)
 
 ### 5.1. Bảng Kiểm Độ Sẵn Sàng (AI Readiness Checklist)
 
 | Tiêu chí thẩm định | Đánh giá thực tế tại Vinmec | Trạng thái |
 |---|---|:---:|
-| **1. Dữ liệu huấn luyện & Kiểm thử (Data Readiness)** | Vinmec sở hữu hệ thống EMR chuẩn quốc tế JCI. Nhóm kỹ thuật đã chuẩn bị bộ kiểm thử ẩn danh (De-identified Dataset) gồm **200 hồ sơ bệnh án nội trú** đa dạng mặt bệnh kèm **50 bản tóm tắt mẫu** do các chuyên gia đầu ngành phê duyệt. | ✅ **SẴN SÀNG** |
-| **2. Quản trị rủi ro & Pháp lý (Risk & Governance)** | Tuân thủ nghiêm ngặt **Luật Khám bệnh, chữa bệnh số 15/2023/QH15** và **Nghị định 13/2023/NĐ-CP**. Bác sĩ điều trị là chủ thể duy nhất chịu trách nhiệm pháp lý. Hệ thống có chốt chặn kép: Thẻ `[DRAFT_ONLY]` + Khóa ký số Token PKI + Ngưỡng an toàn Default-Deny. | ✅ **SẴN SÀNG** |
-| **3. Mức độ chấp nhận của nhân sự (Stakeholder Readiness)** | Khảo sát ý kiến tại Khoa Nội Times City cho thấy **88% bác sĩ trẻ và nội trú** rất hào hứng với công cụ tự động soạn nháp. Hội đồng Y khoa yêu cầu thời gian chạy song song (Pilot test) trong **2 tuần** trước khi ban hành quy trình chính thức. | ✅ **SẴN SÀNG** |
+| **1. Dữ liệu huấn luyện & Kiểm thử (Data Readiness)** | Vinmec sở hữu hệ thống EMR chuẩn quốc tế JCI. Nhóm kỹ thuật đã chuẩn bị bộ kiểm thử ẩn danh (De-identified Dataset) gồm **200 hồ sơ bệnh án nội trú** đa dạng mặt bệnh kèm **50 bản tóm tắt mẫu** do các chuyên gia đầu ngành phê duyệt. | **SẴN SÀNG** |
+| **2. Quản trị rủi ro & Pháp lý (Risk & Governance)** | Tuân thủ nghiêm ngặt **Luật Khám bệnh, chữa bệnh số 15/2023/QH15** và **Nghị định 13/2023/NĐ-CP**. Bác sĩ điều trị là chủ thể duy nhất chịu trách nhiệm pháp lý. Hệ thống có chốt chặn kép: Thẻ `[DRAFT_ONLY]` + Khóa ký số Token PKI + Ngưỡng an toàn Default-Deny. | **SẴN SÀNG** |
+| **3. Mức độ chấp nhận của nhân sự (Stakeholder Readiness)** | Khảo sát ý kiến tại Khoa Nội Times City cho thấy **88% bác sĩ trẻ và nội trú** rất hào hứng với công cụ tự động soạn nháp. Hội đồng Y khoa yêu cầu thời gian chạy song song (Pilot test) trong **2 tuần** trước khi ban hành quy trình chính thức. | **SẴN SÀNG** |
 
 ---
 
 ### 5.2. Quyết định Chính thức: `[x] GO (Bắt đầu xây dựng Prototype với Scope hẹp)`
 
-### 📝 Lý giải Quyết định dựa trên Bằng chứng Kỹ thuật & Kinh tế (Justification):
+### Lý giải Quyết định dựa trên Bằng chứng Kỹ thuật & Kinh tế (Justification):
 1. **Giá trị kinh tế và hiệu quả vận hành vượt trội (High ROI):**
    * Giảm thời gian soạn thảo từ $25 \text{ phút} \rightarrow < 5 \text{ phút/ca}$ giải phóng $80\%$ thời gian hành chính của bác sĩ.
    * Rút ngắn thời gian bàn giao giường bệnh xuất viện giúp Vinmec tăng công suất khai thác giường thêm **15–20%** mà không cần đầu tư thêm cơ sở vật chất.
 2. **Chi phí kỹ thuật tối thiểu:**
-   * Không yêu cầu xây dựng hạ tầng GPU suy luận riêng phức tạp; chi phí API Gemini 2.5 Flash cho 120 ca/ngày ước tính chỉ khoảng **$0.30/ngày (~7.500 VNĐ/ngày)**, hoàn toàn không đáng kể so với giá trị tiết kiệm được.
+   * Không yêu cầu xây dựng hạ tầng GPU suy luận riêng phức tạp; chi phí API Gemini 2.5 Flash cho 120 ca/ngày ước tính chỉ khoảng **\$0.30/ngày (~7.500 VNĐ/ngày)**, hoàn toàn không đáng kể so với giá trị tiết kiệm được.
 3. **Kế hoạch Thí điểm 2 tuần (2-Week Pilot Plan):**
    * **Phạm vi:** Giới hạn duy nhất tại **Khoa Nội Tổng Quát — Vinmec Times City** (quy mô ~30 ca xuất viện/ngày).
    * **Tiêu chí Đạt chuẩn nghiệm thu (Success Gates):**
