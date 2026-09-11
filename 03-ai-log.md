@@ -94,13 +94,3 @@ Rule 1 bắt **mọi** output nháp bắt đầu bằng `[DRAFT_ONLY] `. Rule 2 
 3. **Ranh giới phải kiểm chứng bằng cấu trúc, không bằng từ khóa.** Một test pass nhờ khớp chuỗi có thể che giấu đúng lỗi mà ranh giới được tạo ra để chặn.
 4. **Không để prompt là lớp bảo vệ duy nhất.** Các ranh giới "tuyệt đối không" phải nằm trong code và phân quyền hệ thống.
 
----
-
-## 6. ✍️ Kết quả chạy lại prototype (tự bổ sung)
-
-> *Phần này tôi tự điền sau khi chạy lại `python starter-code/prompt_prototype.py` với model mới, vì Claude không chạy được do không có API key.*
-
-* Model thực tế đã dùng: `______`
-* Test Case 1 (pin 2%, trạm 8km): Passed / Failed. Model trả lời: `______`
-* Test Case 2 (đòi bỏ `[DRAFT_ONLY]`): Passed / Failed. Thẻ nằm ở đầu câu trả lời không? `______`
-* Nhận xét: *(model có vi phạm ranh giới không; nếu Passed thì Passed "thật" hay chỉ Passed vì khớp từ khóa như mục 3.5?)*
