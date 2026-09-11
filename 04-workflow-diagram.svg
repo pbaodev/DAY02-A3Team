@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1600" height="900" fill="#ffffff"/>
+  <text x="800" y="48" text-anchor="middle" font-size="30" font-weight="bold" fill="#1a1a1a">Current-State Workflow — VinFast Service Ticket Triage (Vin Smart Future)</text>
+  <text x="800" y="80" text-anchor="middle" font-size="17" fill="#555">Khách mô tả lỗi xe bằng tiếng Việt đời thường → Cố vấn dịch vụ (SA) phân loại thủ công → Work Order cho Kỹ thuật viên (KTV)</text>
+
+  <!-- swimlane labels -->
+  <g font-size="16" font-weight="bold" fill="#333">
+    <rect x="30" y="120" width="1540" height="200" rx="8" fill="#f7f9fc" stroke="#d0d7e2"/>
+    <text x="45" y="145">KHÁCH HÀNG</text>
+    <rect x="30" y="340" width="1540" height="330" rx="8" fill="#fbfbf7" stroke="#e0dcc8"/>
+    <text x="45" y="365">CỐ VẤN DỊCH VỤ (SA) — CRM / DMS / Kho / Điện thoại</text>
+    <rect x="30" y="690" width="1540" height="130" rx="8" fill="#f6fbf7" stroke="#cfe3d4"/>
+    <text x="45" y="715">KỸ THUẬT VIÊN (KTV)</text>
+  </g>
+
+  <defs>
+    <marker id="arr" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#333"/></marker>
+  </defs>
+
+  <!-- Step 1 -->
+  <g>
+    <rect x="70" y="170" width="300" height="120" rx="10" fill="#ffffff" stroke="#3b6ea5" stroke-width="2.5"/>
+    <text x="220" y="198" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">1. Gửi yêu cầu qua app / hotline</text>
+    <text x="220" y="224" text-anchor="middle" font-size="14" fill="#444">Mô tả tự do + ảnh/video</text>
+    <text x="220" y="246" text-anchor="middle" font-size="14" fill="#444">"xe kêu cụp cụp bánh trước..."</text>
+    <text x="220" y="274" text-anchor="middle" font-size="14" fill="#666">Out: Ticket trên CRM</text>
+  </g>
+
+  <!-- handoff 1 -->
+  <path d="M220,290 L220,400" stroke="#333" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="232" y="325" width="150" height="30" rx="15" fill="#fff3cd" stroke="#cc9a06"/>
+  <text x="307" y="345" text-anchor="middle" font-size="14" font-weight="bold" fill="#7a5c00">HANDOFF</text>
+
+  <!-- Step 2 -->
+  <g>
+    <rect x="70" y="400" width="300" height="130" rx="10" fill="#ffffff" stroke="#3b6ea5" stroke-width="2.5"/>
+    <text x="220" y="428" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">2. Đọc ticket, tra lịch sử xe</text>
+    <text x="220" y="454" text-anchor="middle" font-size="14" fill="#444">VIN, km, đời xe, gói bảo hành</text>
+    <text x="220" y="476" text-anchor="middle" font-size="14" fill="#444">In: Ticket + VIN → Out: Hồ sơ xe</text>
+    <text x="220" y="508" text-anchor="middle" font-size="15" font-weight="bold" fill="#2a6f3e">~1.5 phút</text>
+  </g>
+
+  <path d="M370,465 L440,465" stroke="#333" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- Step 3 (bottleneck) -->
+  <g>
+    <rect x="445" y="400" width="320" height="130" rx="10" fill="#fff0f0" stroke="#c62828" stroke-width="3.5"/>
+    <text x="605" y="428" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">3. Gọi lại khách hỏi làm rõ</text>
+    <text x="605" y="454" text-anchor="middle" font-size="14" fill="#444">Kêu khi nào? tốc độ? đèn báo gì?</text>
+    <text x="605" y="476" text-anchor="middle" font-size="14" fill="#444">Khách không nghe máy → ticket treo 2-4h</text>
+    <text x="605" y="508" text-anchor="middle" font-size="15" font-weight="bold" fill="#c62828">~3-4 phút  (BOTTLENECK)</text>
+  </g>
+
+  <path d="M765,465 L835,465" stroke="#333" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- Step 4 (bottleneck) -->
+  <g>
+    <rect x="840" y="400" width="340" height="130" rx="10" fill="#fff0f0" stroke="#c62828" stroke-width="3.5"/>
+    <text x="1010" y="428" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">4. Chọn nhóm lỗi, ước công, tra kho</text>
+    <text x="1010" y="454" text-anchor="middle" font-size="14" fill="#444">Gầm / Điện / Pin / HMI / Thân vỏ ...</text>
+    <text x="1010" y="476" text-anchor="middle" font-size="14" fill="#444">Phụ thuộc kinh nghiệm SA — ~15-20% sai nhóm</text>
+    <text x="1010" y="508" text-anchor="middle" font-size="15" font-weight="bold" fill="#c62828">~3-4 phút  (BOTTLENECK)</text>
+  </g>
+
+  <path d="M1180,465 L1250,465" stroke="#333" stroke-width="2.5" marker-end="url(#arr)"/>
+
+  <!-- Step 5 -->
+  <g>
+    <rect x="1255" y="400" width="290" height="130" rx="10" fill="#ffffff" stroke="#3b6ea5" stroke-width="2.5"/>
+    <text x="1400" y="428" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">5. Xác nhận lịch hẹn + tạo WO</text>
+    <text x="1400" y="454" text-anchor="middle" font-size="14" fill="#444">Trên DMS; báo khách slot xưởng</text>
+    <text x="1400" y="476" text-anchor="middle" font-size="14" fill="#444">Out: Lịch hẹn + Work Order</text>
+    <text x="1400" y="508" text-anchor="middle" font-size="15" font-weight="bold" fill="#2a6f3e">~1.5 phút</text>
+  </g>
+
+  <!-- handoff 2 -->
+  <path d="M1400,530 L1400,745" stroke="#333" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="1412" y="600" width="150" height="30" rx="15" fill="#fff3cd" stroke="#cc9a06"/>
+  <text x="1487" y="620" text-anchor="middle" font-size="14" font-weight="bold" fill="#7a5c00">HANDOFF</text>
+
+  <!-- Step 6 -->
+  <g>
+    <rect x="1080" y="740" width="460" height="70" rx="10" fill="#ffffff" stroke="#2a6f3e" stroke-width="2.5"/>
+    <text x="1310" y="768" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">6. Nhận Work Order, chuẩn bị phụ tùng / dụng cụ</text>
+    <text x="1310" y="794" text-anchor="middle" font-size="14" fill="#444">WO thiếu ngữ cảnh → KTV phải hỏi lại khách khi xe đến xưởng</text>
+  </g>
+
+  <!-- Re-schedule loop -->
+  <path d="M1080,775 C 800,775 640,700 605,535" stroke="#c62828" stroke-width="2" stroke-dasharray="8,6" fill="none" marker-end="url(#arr)"/>
+  <text x="850" y="650" font-size="14" fill="#c62828" font-weight="bold">~15-20% ticket sai nhóm lỗi → khách phải hẹn lại lần 2, làm lại từ bước 3</text>
+
+  <!-- Legend -->
+  <g font-size="15" fill="#333">
+    <rect x="70" y="560" width="470" height="95" rx="8" fill="#ffffff" stroke="#bbb"/>
+    <text x="90" y="586" font-weight="bold">Chú giải</text>
+    <rect x="90" y="600" width="22" height="16" fill="#fff0f0" stroke="#c62828" stroke-width="2.5"/><text x="120" y="613">Bottleneck (chậm / lỗi nhiều nhất)</text>
+    <rect x="90" y="626" width="22" height="16" rx="8" fill="#fff3cd" stroke="#cc9a06"/><text x="120" y="639">Handoff giữa người / bộ phận / hệ thống</text>
+    <text x="850" y="590" font-size="17" font-weight="bold" fill="#1a1a1a">Tổng (phần SA) ≈ 10 phút / ticket</text>
+    <text x="850" y="614" fill="#555">~200 ticket/ngày/xưởng → ~33 giờ SA/ngày</text>
+  </g>
+
+  <text x="800" y="870" text-anchor="middle" font-size="13" fill="#888">Con số vận hành là ước tính để scoping (~), cần xác nhận với Khối Dịch vụ Hậu mãi VinFast trước khi làm baseline.</text>
+</svg>
